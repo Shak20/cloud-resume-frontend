@@ -21,5 +21,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Sync S3 bucket
+        env:
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}   # <-- THIS LINE ADDED
         run: |
           aws s3 sync ./ s3://$S3_BUCKET_NAME/ --delete
